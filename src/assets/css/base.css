@@ -1,0 +1,67 @@
+@import "normalize.css";
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    user-select: none; /* 禁止用户鼠标在页面上选中文字/图片等 */
+    background-color: #f6f6f6;
+    /*开启用户鼠标在页面上选中文字*/
+    /* -webkit-user-select: text; */
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: none;
+}
+.clear-fix::after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.clear-fix {
+    zoom: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+@media(min-width:1200px){
+    .header{
+        width: 1260px;
+        margin: 0 auto;
+    }
+    .home {
+        width: 1260px;
+        margin: 0 auto;
+    }
+}
+
+h1{
+    /* display: block; */
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-size: 28px;
+    color: #222226;
+    font-weight: 600;
+    margin: 0;
+    word-break: break-all;
+}
