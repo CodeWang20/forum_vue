@@ -35,15 +35,17 @@
 </template>
 
 <script>
-import {creation, getAllPlate} from "@/network/blogs"
+import {creation, getAllPlate, getArticleById} from "@/network/blogs"
 export default {
     data() {
         return {
             plates: null,
             articleForm: {
+                id: null,
                 userId: this.$store.state.userInfo.id,
                 title: '',
                 summary: '',
+                plateId: '',
                 content: '',
         },
         rules: {
@@ -68,6 +70,9 @@ export default {
                 if (valid) {
                     creation(this.articleForm).then(res => {
                         console.log(res)
+                        if(res.code == 200) {
+                            this.$router.replace(`/${this.$store.getters.username}/article`)
+                        }
                     })
                 } else {
                     return false;
@@ -79,6 +84,18 @@ export default {
         }
     },
     created(){
+        let _this = this;
+        if(this.$route.params.id){
+            getArticleById(this.$route.params.id).then(res => {
+                _this.articleForm.id = res.data.id
+                _this.articleForm.userId = res.data.userId
+                _this.articleForm.title = res.data.title
+                _this.articleForm.summary = res.data.summary
+                _this.articleForm.plateId = res.data.plateId
+                _this.articleForm.content = res.data.content
+            })
+        }
+
         getAllPlate().then(res => {
             this.plates = res.data
         })

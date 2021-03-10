@@ -1,5 +1,45 @@
 import {request} from "./request";
 
+
+/**
+ * 根据用户id获取收藏夹信息
+ */
+export function favorites (userId){
+    return request({
+        method: "GET",
+        url: "favorites/all",
+        params: {
+            userId
+        }
+    })
+}
+/**
+ * 根据用户id获取收藏信息 
+ */
+export function collection (params){
+    return request({
+        method: "GET",
+        url: "collect/collection",
+        params: {
+            userId: params.userId,
+            favId: params.favId
+        }
+    })
+}
+
+/**
+ * 根据id删除文章 
+ */
+export function deleteBlog(id){
+    return request({
+        method: "GET",
+        url: "article/deleteBlog",
+        params: {
+            id
+        }
+    })
+}
+
 /**
  * 获取所有板块信息
  */
@@ -14,7 +54,6 @@ export function getAllPlate(){
  * 发布文章 
  */
 export function creation(data){
-    console.log(data)
     return request({
         method: "POST",
         url: "article/creation",
@@ -84,5 +123,17 @@ export function addPageviews(id){
         params:{
             id
         }
+    })
+}
+
+
+/**
+ * 用户点击访问文章后，更新浏览量 
+  */
+ export function selfBlogs(data){
+    return request({
+        method: 'GET',
+        url: "article/selfBlogs",
+        params: data
     })
 }

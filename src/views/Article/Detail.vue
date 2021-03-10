@@ -16,7 +16,9 @@
                 <div class=" info-box">
                     <div class="bar-top">
                         <div class="bar-content">
-                            <span>发表时间：{{article.created}}</span>
+                            <el-tooltip effect="light" :content="'最后更新时间：' + article.lastUpdate" placement="top-start">
+                                <span>发表时间：{{article.created}}</span>
+                            </el-tooltip>
                             <span>
                                 <a v-if="isCollected == false" @click="addCollect">
                                     <img class="icon" :size="20"  :src='require("@/assets/img/collect.png")'>

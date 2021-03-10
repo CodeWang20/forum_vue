@@ -4,7 +4,10 @@
         <div class="logo"><h2>XX论坛</h2></div>
         <div class="nav">
             <el-menu mode="horizontal">
-                <el-menu-item index="1" href="/"><router-link to="/">首页</router-link></el-menu-item>
+                <el-menu-item index="1">
+                    <router-link v-if="$store.getters.username != null" :to="'/' + $store.getters.username">首页</router-link>
+                    <router-link v-else to="/">首页</router-link>
+                </el-menu-item>
                 <el-menu-item index="2"><router-link to="/home">焦点</router-link></el-menu-item>
                 <el-menu-item index="3"><router-link to="/about">关于</router-link></el-menu-item>
             </el-menu>
@@ -16,14 +19,13 @@
         <div  class="toolbar-right hidden-xs-only">
             <div class="content">
                 <!--用户已登录-->
-                <!-- <div v-if="isLogin==true"> -->
-                <div v-if="$store.state.token != null">
+                <div v-if="$store.getters.user != null">
                     <div class="info">
                         <el-menu mode="horizontal">
                             <el-submenu index="1">
                                 <template slot="title"><el-avatar class="avatar" icon="el-icon-user-solid" :size="48" :src='require("@/assets/img/avatar.jpg")' /></template>
-                                <el-menu-item class="profile">个人中心</el-menu-item>
-                                <el-menu-item>选项2</el-menu-item>
+                                <el-menu-item  @click="$router.replace(`/${$store.getters.username}/home`)">个人中心</el-menu-item>
+                                <el-menu-item  @click="$router.replace(`/${$store.getters.username}/article`)">内容管理</el-menu-item>
                                 <el-menu-item @click="logoutFrame">退出</el-menu-item>
                             </el-submenu>
                         </el-menu>
@@ -35,7 +37,7 @@
                             <el-link :underline="false">收藏</el-link>
                             <el-link :underline="false">消息</el-link>
                         </div>
-                        <el-button @click="$router.replace(`/${$store.state.userInfo.username}/blogs/edit`)"  type="danger" icon="el-icon-edit" round>创作</el-button>
+                        <el-button @click="$router.replace(`/${$store.getters.username}/blogs/edit`)"  type="danger" icon="el-icon-edit" round>创作</el-button>
                     </div>
                 </div>
                 <!--用户未登录-->
@@ -61,7 +63,6 @@
             input: '',
             loginDialogVisible: false,
             result: '',
-
         };
     },
     methods:{

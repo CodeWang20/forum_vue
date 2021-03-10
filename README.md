@@ -31,3 +31,12 @@ cnpm install markdown-it --save
 cnpm install github-markdown-css --save
 在页面引入css样式
 import "github-markdown-css"
+
+安装fontAwesome图标依赖
+cnpm install font-awesome --save
+在main.js中引入fontAwesome图标依赖
+import 'font-awesome/css/font-awesome.css';
+使用图标
+<i class="fa fa-address-book-o" aria-hidden="true"></i>
+
+

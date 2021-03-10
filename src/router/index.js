@@ -5,38 +5,46 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/:username',
-    component:Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/:username/blogs',
-    name: 'Blogs',
-    component: () => import("@/views/Article/Blogs.vue")
-  },
-  {
-    path: '/:username/blogs/edit',
-    name: 'Edit',
-    component: () => import("@/views/Article/Edit.vue")
-  },
-  {
-    path: '/:userId/detail/:id',
-    name: 'Detail',
-    component: () => import("@/views/Article/Detail.vue")
-  },
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/:username',
+        component:Home
+    },
+    {
+        path: '/about',
+        name: 'About',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+    },
+    {
+        path: '/:username/blogs/edit',
+        name: 'Edit',
+        component: () => import("@/views/Article/Edit.vue")
+    },
+    {
+        path: '/:username/blogs/edit/:id',
+        name: 'Edit',
+        component: () => import("@/views/Article/Edit.vue")
+    },
+    {
+        path: '/detail/:id',
+        name: 'Detail',
+        component: () => import("@/views/Article/Detail.vue")
+    },{
+        path: '/:username/home',
+        name: 'UserHome',
+        component: () => import("@/views/User/Home.vue")
+    },{
+        path: '/:username/article',
+        name: 'Article',
+        component: () => import("@/views/Article/Article.vue")
+    }
 ]
 
 // 解决重复点击路由报错的BUG
@@ -47,9 +55,9 @@ VueRouter.prototype.push = function push(location) {
 
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router

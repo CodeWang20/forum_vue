@@ -7,7 +7,11 @@
         <div class="center">
             <div class="head">
                 <div class="title" @click="articleClick">{{articleItem.title}}</div>
-                <div class="issuing hidden-xs-only"><small>发表于：{{articleItem.created}}</small></div>
+
+                <el-tooltip effect="light" :content="'最后更新时间：' + articleItem.lastUpdate" placement="top-start">
+                    <div class="issuing hidden-xs-only"><small>发表于：{{articleItem.created}}</small></div>
+                </el-tooltip>
+                
                 <div class="attention">
                     <el-button type="primary" round size="mini" icon="el-icon-circle-plus">关注</el-button>
                 </div>
@@ -44,7 +48,7 @@ export default {
     methods:{
         articleClick(){
             addPageviews(this.articleItem.id)
-            this.$router.push( `/${this.articleItem.userId}/detail/${this.articleItem.id}`)
+            this.$router.push( `/detail/${this.articleItem.id}`)
         }
     }
 }

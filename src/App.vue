@@ -6,7 +6,6 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-  <!-- <el-button type="primary">主要按钮</el-button> -->
     <router-view/>
   </div>
 </template>

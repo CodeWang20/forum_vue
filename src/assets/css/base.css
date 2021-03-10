@@ -21,6 +21,15 @@ a {
 a:hover {
     text-decoration: none;
 }
+li, ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: PingFang SC,Hiragino Sans GB,Arial,Microsoft YaHei,Verdana,Roboto,Noto,Helvetica Neue,sans-serif!important;
+}
 .clear-fix::after {
     clear: both;
     content: '';
@@ -50,6 +59,15 @@ a:hover {
     .home {
         width: 1260px;
         margin: 0 auto;
+    }
+    #page-container{
+        max-width: 1460px;
+        min-width: 1200px;
+        margin: 0 auto;
+    }
+    #profile-container{
+        width: 1124px;
+        margin: 40px auto 0;
     }
 }
 
